@@ -1,19 +1,12 @@
 const express = require("express");
 const app = express();
-const userController = require("./contorller/user");
-
+const homeRouter = require("./router/home");
+const userRouter = require("./router/user");
 app.use(express.json());
 
-app.get("/home", (req, res) => {
-  return res.status(200).send("got data sddfsaohdfsdh");
-});
-
-app.post("/home", (req, res) => {
-  console.log(req.body);
-  return res.send("post data got");
-});
-
-app.get("/user", userController.getUser);
+// routers
+app.use("/home", homeRouter);
+app.use("/user", userRouter);
 
 module.exports = app;
 
