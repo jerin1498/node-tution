@@ -10,6 +10,10 @@ mongoose
   .then(() => console.log("db connected successfully"))
   .catch((err) => console.log("db error -->", err));
 
+
+
 app.listen(port, () => {
   console.log("app started to run ", port);
 });
+
+
