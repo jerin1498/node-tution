@@ -14,6 +14,9 @@ exports.getUser = async (req, res) => {
 exports.createUser = async (req, res) => {
   try {
     const { body } = req;
+    if (!body.email) {
+      throw new Error("email is must");
+    }
     const user = await User.create(body);
     return res.status(201).json({
       status: "success",
