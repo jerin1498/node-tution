@@ -1,4 +1,5 @@
 const User = require("../model/user");
+const AppError = require("../helper/appError");
 
 exports.getUser = async (req, res) => {
   const users = await User.find();
@@ -15,7 +16,7 @@ exports.createUser = async (req, res) => {
   try {
     const { body } = req;
     if (!body.email) {
-      throw new Error("email is must");
+      throw new AppError("email is must", 404);
     }
     const user = await User.create(body);
     return res.status(201).json({
